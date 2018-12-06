@@ -14,7 +14,7 @@ public void setup()
   	//for(int i = 0; i < rock.length; i++) {
     //rock[i] = new Asteroid();
     // }
-    for(int i = 0; i < 10; i++)
+    for(int i = 0; i < 15; i++)
     {
     	rock.add(new Asteroid());
     }
@@ -32,6 +32,10 @@ public void draw()
     {
     rock.get(i).show();
     rock.get(i).move();
+    if (dist(rock.get(i).getX(), rock.get(i).getY(),ship.getX(), ship.getY()) < 20) 
+    {
+      rock.remove(i);
+    }
     }
 
     if (isAccelerating == true){ship.accelerate(.1);}
