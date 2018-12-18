@@ -1,5 +1,6 @@
 class Spaceship extends Floater  
 { 
+   public double topXSpeed, topYSpeed;
    public void setX(int x) {myCenterX = x;} 
    public int getX() {return (int) myCenterX;}   
    public void setY(int y){myCenterY = y;}   
@@ -10,6 +11,9 @@ class Spaceship extends Floater
    public double getDirectionY(){return myDirectionY;}   
    public void setPointDirection(int degrees){myPointDirection = degrees;}   
    public double getPointDirection(){return myPointDirection;}
+   public void setTopSpeed(double x, double y) {topXSpeed = x; topYSpeed = y;}
+   public double getTopSpeedX() {return topXSpeed;}
+   public double getTopSpeedY() {return topYSpeed;}
 
    public Spaceship()
    {
@@ -50,5 +54,20 @@ class Spaceship extends Floater
     //change coordinates of direction of travel    
     myDirectionX -= ((dAmount) * Math.cos(dRadians));    
     myDirectionY -= ((dAmount) * Math.sin(dRadians));       
+  }   
+  
+  public void accelerate (double dAmount, char type)   
+  {          
+    //convert the current direction the floater is pointing to radians    
+    double dRadians = myPointDirection*(Math.PI/180);     
+    //change coordinates of direction of travel    
+    if(type== 'x')
+    {
+      myDirectionX += ((dAmount) * Math.cos(dRadians)); 
+    }
+    if(type == 'y')
+    {
+      myDirectionY +=((dAmount) * Math.sin(dRadians));
+    }
   }   
 }
